@@ -1,6 +1,5 @@
 Feature: Example tests for a bookstore api
 
-
     Scenario: Find added book 
         Given An empty bookstore
         When Add "a book" by "somebody" with id 123
@@ -33,6 +32,22 @@ Feature: Example tests for a bookstore api
         Then Total books count is 2
         But Add "some other book" by "Jeff" with id 999
         Then Total books count is 3
+
+    Scenario: Remove one book 
+        Given An empty bookstore
+        When Add "a book" by "somebody" with id 123
+        And Add "another book" by "another author" with id 456
+        Then Total books count is 2
+        But Remove book with id 123
+        Then Total books count is 1
+
+    Scenario: Remove all books 
+        Given An empty bookstore
+        When Add "a book" by "somebody" with id 123
+        And Add "another book" by "another author" with id 456
+        Then Total books count is 2
+        But Remove all books
+        Then Total books count is 0
 
     Scenario Outline: Adding multiple books with scenario outline
         Given An empty bookstore

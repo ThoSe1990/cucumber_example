@@ -17,16 +17,16 @@ steps:
     sudo apt install cucumber
     git clone https://github.com/cucumber/cucumber-cpp
     cd cucumber-cpp
-    cmake -S ./ -B ./build
-    cmake --build ./build
-    cmake --install ./build
+    sudo cmake -S ./ -B ./build
+    sudo cmake --build ./build
+    sudo cmake --install ./build
     cd ..
-    export CUCUMBER_ROOT=/usr/local
-    cmake -S ./ -B ./build
-    cmake --build ./build
-    ./build/bin/cucumer_example  &
+    sudo export CUCUMBER_ROOT=/usr/local
+    sudo cmake -S ./ -B ./build
+    sudo cmake --build ./build
+    sudo ./build/bin/cucumer_example  &
     cd ./src/cucumber
-    cucumber ./features/example.feature
+    sudo cucumber ./features/example.feature
     
 
   displayName: 'build and run'
