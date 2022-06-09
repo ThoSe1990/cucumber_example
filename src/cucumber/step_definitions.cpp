@@ -44,7 +44,7 @@ WHEN("^Add \"(.*?)\" by \"(.*?)\" with id (\\d+)$")
 WHEN("^Remove book with id (\\d+)$")
 {
     REGEX_PARAM(std::size_t, id);
-    details::get_bookstore().remove(id);
+    details::get_bookstore().remove_book(id);
 }
 WHEN("^Remove all books$")
 {
