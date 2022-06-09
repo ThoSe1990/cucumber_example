@@ -23,9 +23,9 @@ steps:
     cd ..
     sudo cmake -S ./ -B ./build -DCUCUMBER_ROOT=/usr/local
     sudo cmake --build ./build
-    sudo ./build/bin/cucumer_example  &
+    ./build/bin/cucumer_example  &
     cd ./src/cucumber
-    sudo cucumber ./features/example.feature
+    cucumber ./features/example.feature
     
 
   displayName: 'build and run'
