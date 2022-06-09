@@ -21,7 +21,7 @@ steps:
     sudo cmake --build ./build
     sudo cmake --install ./build
     cd ..
-    sudo export CUCUMBER_ROOT=/usr/local
+    export CUCUMBER_ROOT=/usr/local
     sudo cmake -S ./ -B ./build
     sudo cmake --build ./build
     sudo ./build/bin/cucumer_example  &
