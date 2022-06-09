@@ -1,7 +1,7 @@
 
 # Coding With Thomas: Cucumber Example
 
-Find the corresponding Blog post here: 
+Find the corresponding Blog post here: https://www.codingwiththomas.com/blog/start-using-cucumber
 
 To build and run this example please install all needed dependencies.  
 
