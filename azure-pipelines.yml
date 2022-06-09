@@ -16,11 +16,9 @@ steps:
     sudo apt-get install libgtest-dev
     sudo apt install cucumber
     git clone https://github.com/cucumber/cucumber-cpp
-    cd cucumber-cpp
-    sudo cmake -S ./ -B ./build
-    sudo cmake --build ./build
-    sudo cmake --install ./build
-    cd ..
+    sudo cmake -S ./cucumber-cpp -B ./cucumber-cpp/build
+    sudo cmake --build ./cucumber-cpp/build
+    sudo cmake --install ./cucumber-cpp/build
     sudo cmake -S ./ -B ./build -DCUCUMBER_ROOT=/usr/local
     sudo cmake --build ./build
     pwd
