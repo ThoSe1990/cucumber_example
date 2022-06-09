@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+steps:
+- script: | 
+    sudo apt-get update
+    sudo apt-get install build-essential
+    sudo apt-get install libboost-all-dev
+    sudo apt-get install libgtest-dev
+    sudo apt install cucumber
+    git clone https://github.com/cucumber/cucumber-cpp
+    cd cucumber-cpp
+    cmake -S ./ -B ./build
+    cmake --build ./build
+    cmake --install ./build
+    cd ..
+    export CUCUMBER_ROOT=/usr/local
+    cmake -S ./ -B ./build
+    cmake --build ./build
+    ./build/bin/cucumer_example  &
+    cd ./src/cucumber
+    cucumber ./features/example.feature
+    
+
+  displayName: 'build and run'
