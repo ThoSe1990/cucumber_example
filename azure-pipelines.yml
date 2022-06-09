@@ -23,6 +23,7 @@ steps:
     cd ..
     sudo cmake -S ./ -B ./build -DCUCUMBER_ROOT=/usr/local
     sudo cmake --build ./build
+    pwd
     ./build/bin/cucumer_example  &
     cd ./src/cucumber
     cucumber ./features/example.feature
