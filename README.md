@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/thomassedlmair/cucumber_example/_apis/build/status/ThoSe1990.cucumber_example?branchName=main)](https://dev.azure.com/thomassedlmair/cucumber_example/_build/latest?definitionId=12&branchName=main)
 
 # Coding With Thomas: Cucumber Example
 
