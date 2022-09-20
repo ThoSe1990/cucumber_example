@@ -10,33 +10,20 @@ This installation guide refers to an Ubuntu systems. In general I use a docker c
 
 ## Cucumber And It's Dependencies
 
-Download cucumber to execute your tests: 
-```
-sudo apt-get install cucumber
-```
-
-Before we build the cpp development libraries to buid our project we need depending libraries first:
-```
-apt-get install build-essential
-apt-get install libboost-all-dev
-apt-get install libgtest-dev
-```
-
-Now clone the cucumber-cpp repository and build it:
-```
-git clone https://github.com/cucumber/cucumber-cpp
-cmake -S ./ -B ./build
-cmake --build ./build
-cmake --install ./build
-```
-
-And finally we can build our project, provide for cmake the Cucumber root directory (change it accoordingly in case you have changed the installation path)
+Moved to conan build. Since there is no cucumber recipe on conancenter or bincrafters, I provide this conanfile which worked for me in combination with gtest. I only tried it with msvc on windows and gcc on ubuntu. To create the conan package on your local machine run: 
 
 ```
-export CUCUMBER_ROOT=/usr/local
-cmake -S ./ -B ./build
-cmake --build ./build
+conan create .\conanfile\cucumber-cpp\conanfile.py cucumber-cpp/0.5@cwt/stable --build missing
 ```
+
+After the package was created the project can be built with: 
+
+```
+conan install . -if build --build missing
+cmake -S . -B ./build 
+cmake --build ./build (--config Debug/Release # for msvc builds...)
+```
+
 
 ### Run 
 
