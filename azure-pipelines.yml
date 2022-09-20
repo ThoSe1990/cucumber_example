@@ -17,7 +17,7 @@ steps:
     sudo pip3 install conan
     conan profile new default --detect
     conan profile update settings.compiler.libcxx=libstdc++11 default
-    conan create .\conanfile\cucumber-cpp\conanfile.py cucumber-cpp/0.5@cwt/stable --build missing
+    conan create ./conanfile/cucumber-cpp/conanfile.py cucumber-cpp/0.5@cwt/stable --build missing
     conan install . -if build --build missing
     cmake -S . -B ./build 
     cmake --build ./build
