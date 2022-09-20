@@ -18,17 +18,18 @@ Feature: Remove Books
 
     Scenario Outline: This will fail
         Given An empty bookstore
-        When Add "any book" by "any one" with id <id>
+        When Add "any book" by "any one" with id 1
         Then Bookstore has "some book" by "another author"
 
-    Scenario Outline: Adding multiple books with scenario outline
+    Scenario Outline: Remove two books 
         Given An empty bookstore
-        When Add "example book 1" by "author 1" with id <id>
-        And Add "example book 2" by "author 2" with id <id>
-        And Add "example book 3" by "author 3" with id <id>
+        When Add "example book 1" by "author 1" with id 1
+        And Add "example book 2" by "author 2" with id 2
+        And Add "example book 3" by "author 3" with id 3
         Then Total books count is 3
-        And Bookstore has "example book 1" by "author 1"
+        But Remove book with id 1
+        But Remove book with id 3
+        Then Total books count is 1
         And Bookstore has "example book 2" by "author 2"
-        And Bookstore has "example book 3" by "author 3"
 
 

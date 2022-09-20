@@ -12,18 +12,16 @@ steps:
 - script: | 
     sudo apt-get update
     sudo apt-get install build-essential
-    sudo apt-get install libboost-all-dev
-    sudo apt-get install libgtest-dev
-    sudo apt install cucumber
-    git clone https://github.com/cucumber/cucumber-cpp
-    sudo cmake -S ./cucumber-cpp -B ./cucumber-cpp/build
-    sudo cmake --build ./cucumber-cpp/build
-    sudo cmake --install ./cucumber-cpp/build
-    sudo cmake -S ./ -B ./build -DCUCUMBER_ROOT=/usr/local
-    sudo cmake --build ./build
+    sudo apt install python3-pip -y
+    sudo pip3 install cmake 
+    sudo pip3 install conan
+    sudo conan profile new default --detect
+    sudo conan profile update settings.compiler.libcxx=libstdc++11 default
+    conan create .\conanfile\cucumber-cpp\conanfile.py cucumber-cpp/0.5@cwt/stable --build missing
+    conan install . -if build --build missing
+    cmake -S . -B ./build 
+    cmake --build ./build
     ./build/bin/cucumber_example  &
-    cd ./src/cucumber
-    cucumber ./features/example.feature
-    
+    cucumber ./features
 
   displayName: 'build and run'
