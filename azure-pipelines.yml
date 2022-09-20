@@ -10,9 +10,10 @@ pool:
   vmImage: ubuntu-latest
 steps:
 - script: | 
-    sudo apt-get update
-    sudo apt-get install build-essential
+    sudo apt-get update -y
+    sudo apt-get install build-essential -y
     sudo apt install python3-pip -y
+    sudo apt-get install cucumber -y
     sudo pip3 install cmake 
     sudo pip3 install conan
     conan profile new default --detect
