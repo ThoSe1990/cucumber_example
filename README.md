@@ -8,12 +8,17 @@ To build and run this example please install all needed dependencies.
 
 This installation guide refers to an Ubuntu systems. In general I use a docker container to build and run my cucumber tests. The cucumber development libs need boost and if you don't have already boost in your project then it's quite an effort to install boost under windows. However, you can download Ruby from here: https://rubyinstaller.org/downloads/ and then use `gem install cucumber` from the terminal (Find for instance this installation guide for Windows: https://www.guru99.com/cucumber-installation.html)
 
+## Update 2023/02
+If there are any problems with the build, note: 
+- use a conan version below 2, like 1.57.0
+- i just did a quick and dirty cucumber conan recipe to make the build easier, i didn't test this on many systems, feel free to use the docker (see `./docker/Dockerfile`)
+
 ## Cucumber And It's Dependencies
 
 Moved to conan build. Since there is no cucumber recipe on conancenter or bincrafters, I provide this conanfile which worked for me in combination with gtest. I only tried it with msvc on windows and gcc on ubuntu. To create the conan package on your local machine run: 
 
 ```
-conan create .\conanfile\cucumber-cpp\conanfile.py cucumber-cpp/0.5@cwt/stable --build missing
+conan create ./conanfile/cucumber-cpp/conanfile.py cucumber-cpp/0.5@cwt/stable --build missing
 ```
 
 After the package was created the project can be built with: 
@@ -21,22 +26,21 @@ After the package was created the project can be built with:
 ```
 conan install . -if build --build missing
 cmake -S . -B ./build 
-cmake --build ./build (--config Debug/Release # for msvc builds...)
+cmake --build ./build 
 ```
 
 
 ### Run 
 
-Start our test executable in the background using `&` (or I start usually the executable in debug on my machine).
+Start our test executable in the background using `&` (or I start usually the executable in debug on my machine) and execute cucumber
 ```
-./build/bin/cucumer_example  &
+./build/bin/cucumer_example &
+cucumber ./features/add_book.feature 
 ```
-
-Navigate into `./src/cucumber` and run cucumber with your feature files (placeholders with `*` are allowed here).   
-I don't know why, but I don't get cucumber to run from the project root directory.
+alternatively you can just pass the directory to run all tests:
 ```
-cd ./src/cucumber
-cucumber ./features/example.feature
+./build/bin/cucumer_example &
+cucumber ./features/
 ```
 
 Which brings then the folloing output:

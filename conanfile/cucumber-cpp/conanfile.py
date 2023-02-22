@@ -16,14 +16,9 @@ class CucumberConan(ConanFile):
     options = { "no_main":[True, False]}
     default_options = { "no_main": False}
 
-
     def requirements(self):
-        if self.settings.os == "Windows" and self.settings.compiler == "gcc":
-            self.requires("gtest/1.10.0@yunex/stable")
-            self.requires("boost/1.72.0@yunex/prebuild")
-        else: 
-            self.requires("boost/1.79.0")
-            self.requires("gtest/1.10.0")
+        self.requires("boost/1.80.0")
+        self.requires("gtest/1.10.0")
 
     def source(self):
         self.run("git clone {} ./{}".format(self.url, self._source_subfolder))
