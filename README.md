@@ -34,12 +34,12 @@ cmake --build ./build
 
 Start our test executable in the background using `&` (or I start usually the executable in debug on my machine) and execute cucumber
 ```
-./build/bin/cucumer_example &
-cucumber ./features/add_book.feature 
+./build/bin/cucumber_example &
+cucumber ./features/add_books.feature 
 ```
 alternatively you can just pass the directory to run all tests:
 ```
-./build/bin/cucumer_example &
+./build/bin/cucumber_example &
 cucumber ./features/
 ```
 
